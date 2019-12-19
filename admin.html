@@ -12,19 +12,39 @@
 
 <body>
 
-    <h1>Я главная страница</h1>
-    <a href="client.html">Ссылка на другую страницуу!</a>
+    <h1>Карта кликов и график</h1>
 
-    <div id="container">
+    <ul id="navbar">
+        <li><a>Список сайтов</a>
+            <ul>
+                <lo><a href="#">http://clickmap.com/client.html</a></lo>
+                <lo><a href="#">сайт2</a></lo>
+                <lo><a href="#">сайт3</a></lo>
+            </ul>
+        </li>
+        <li><a href="http://clickmap.com/client.html">Сайт кликер</a></li>
+    </ul>
+
+
+    <!-- 
+    <div id="menu">
+        <h2>Список сайтов</h2>
+
+        <ul id='list'>
+            <li id='client'><a>http://clickmap.com/client.html</a></li>
+        </ul>
+
+        <h2>Добавить сайт</h2>
+        <input id='input' placeholder="http://clickmap.com/client.html">
+        <button id='btn'>Добавить</button>
+    </div>
+    !-->
+
+    <div id="ContainerWrapper">
         <canvas id="myChart"></canvas>
-    </div>
+        <div id="heatmap"></div>
 
-    <div id="heatmapContainerWrapper">
-        <div id="heatmapContainer">
-            <img src="https://i.ytimg.com/vi/H5fRY9mt8-E/maxresdefault.jpg">
-        </div>
     </div>
-
     <script src="admin.js"></script>
 </body>
 

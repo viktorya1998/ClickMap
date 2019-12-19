@@ -26,10 +26,9 @@ document.onclick = function(e) {
     };
 
     $.ajax({
-
         type: 'POST',
         url: 'server.php',
         dataType: 'html',
-        data: ({ x: struct.x, y: struct.y, time: struct.time }),
+        data: ({ 'x': struct.x, 'y': struct.y, 'time': struct.time, 'name': 'Table0' })
     });
 }

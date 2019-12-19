@@ -1,13 +1,18 @@
-//Отправка запроса на сервер
-$.ajax({
-    type: 'POST',
-    url: 'server.php',
-    dataType: 'json',
-    data: ({ tabl: 'Tab1' }),
-    success: Success,
-    error: function(xhr, status, error) {
-        console.log(xhr.responseText + '\n\n' + status + '\n\n' + error);
-    }
+$("lo").click(function() {
+    var index = $(this).parent().children().index(this);
+
+    //Отправка запроса на сервер
+    $.ajax({
+        type: 'POST',
+        url: 'server.php',
+        dataType: 'json',
+        data: { 'table': "Table" + index },
+        success: Success,
+        error: function(xhr, status, error) {
+            console.log(xhr.responseText + '\n\n' + status + '\n\n' + error);
+            //window.location.href = "/glav_en.html";
+        }
+    });
 });
 
 function Success(json) {
@@ -21,14 +26,15 @@ function Success(json) {
 
     //Диаграмма
     chart(time);
+    document.getElementById('myChart').style.background = "rgb(203, 209, 212)";
 
     //Карта кликов
     map(click);
+    document.getElementById('heatmap').style.background = "rgb(203, 209, 212)";
 }
 
 function chart(time) {
     var ctx = document.getElementById('myChart').getContext('2d');
-
     new Chart(ctx, {
         type: 'bar',
         data: {
@@ -39,9 +45,9 @@ function chart(time) {
                 '23:00', '24:00'
             ],
             datasets: [{
-                label: 'My First dataset',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
+                label: " График распределения активности пользователей",
+                backgroundColor: '#666',
+                borderColor: '#666',
                 data: time
             }]
         },
@@ -51,11 +57,13 @@ function chart(time) {
 
 function map(click) {
 
+    var hm = document.getElementById('heatmap');
+
     var heatmap = h337.create({
-        container: document.getElementById('heatmapContainer'),
+        container: hm,
         maxOpacity: .5,
-        radius: 10,
-        blur: .75,
+        radius: 5,
+        blur: .75
     });
 
     heatmap.setData({
